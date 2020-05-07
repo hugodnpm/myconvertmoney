@@ -1,0 +1,19 @@
+{
+  "name": "convertmymoney",
+  "version": "1.0.0",
+  "description": "Covenção Monetário - Projeto do Curso FullStack",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "author": "Hugo Carvalho",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
