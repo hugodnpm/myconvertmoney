@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')))// caminho da pasta publi
 // --* montando as páginas *--
 
 app.get('/', async(req, res) => {
-    const cotacao = await apiBCB.getCotacao()
+    const cotacao = await apiBCB.getCotacao() // colocando a cotação do BCB na página.
         res.render('home', {cotacao})
 })
 
