@@ -2,8 +2,11 @@
 
 const express = require('express')
 const app = express()
-const path = require('path')
+const path = require('path') // para Zeit funcionar
 const convert = require('./lib/convert')
+const apiBCB = require('./lib/api.bcb')
+const port = process.env.PORT || 3000 // instalando o ZEIT
+
 
 // --* Mostrando o caminho das Páginas e como será a página
 
@@ -13,8 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')))// caminho da pasta publi
 
 // --* montando as páginas *--
 
-app.get('/', (req, res) => {
-    res.render('home')
+app.get('/', async(req, res) => {
+    const cotacao = await apiBCB.getCotacao()
+        res.render('home', {cotacao})
 })
 
 app.get('/cotacao', (req, res) => {
@@ -37,7 +41,7 @@ app.get('/cotacao', (req, res) => {
 
 // --* Montando o Servidor *--
 
-app.listen(3000, err => {
+app.listen(port, err => {
     if (err) {
         console.log('Erro ao iniciar o Servidor!')
     } else {
